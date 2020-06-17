@@ -32,6 +32,7 @@ public class PhysicsField extends JPanel
 			color = entity.getColor();
 			
 			g2.setColor(color);
+			g.setColor(color);
 			
 			if(entity instanceof Square)
 			{
@@ -49,6 +50,14 @@ public class PhysicsField extends JPanel
 				g2.fill(new java.awt.Rectangle(origin.x, origin.y, width, height));
 				g2.setColor(Color.BLACK);
 				g2.drawRect(origin.x, origin.y, width, height);
+			}
+			else if(entity instanceof Circle)
+			{
+				int radius = ((Circle) entity).getRadius();
+				
+				g.fillOval(origin.x, origin.y, radius, radius);
+				g.setColor(Color.BLACK);
+				g.drawOval(origin.x, origin.y, radius, radius);
 			}
 		}
 	}
