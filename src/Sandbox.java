@@ -1,29 +1,29 @@
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Point;
 
 import javax.swing.*;
 
-public class Sandbox {
+public class Sandbox extends JFrame{
 
-	JFrame frame = new JFrame("Physics Sandbox");
-	
-	Square square = new Square(new Point(250, 250), 50, "GreenSquare", Color.GREEN);
-	Rectangle rectangle = new Rectangle(new Point(10, 10), 300, 100, "BlueRect", Color.BLUE);
+	private final static Dimension SCREEN_SIZE = new Dimension(800, 700);
+	private PhysicsField field = new PhysicsField();
 	
 	public Sandbox()
 	{
-		frame.setSize(new Dimension(500, 500));
-		frame.setLayout(null);
+		this.setSize(SCREEN_SIZE);
+
+		// Add Physics Objects
+		field.addEntity(new Square(new Point(10, 10), 50, "Square1", Color.BLUE));
+		field.addEntity(new Square(new Point(100, 100), 50, "Square2", Color.YELLOW));
+		field.addEntity(new Rectangle(new Point(300, 300), 10, 30, "Rectangle1", Color.BLACK));
 		
-		frame.add(rectangle);
-		frame.add(square);
+		this.add(field);
 		
-		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setVisible(true);
 	}
 	
-	public static void main(String[] args) 
-	{
-		new Sandbox();
-	}
-
+	public static void main(String[] args) {new Sandbox();}
 }
