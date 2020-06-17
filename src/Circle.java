@@ -18,7 +18,7 @@ public class Circle extends PhysicsObject
 	
 	public void moveX(PhysicsField field, int force)
 	{
-		new Thread()
+		Thread thread = new Thread()
 		{
 			public void run()
 			{
@@ -43,12 +43,15 @@ public class Circle extends PhysicsObject
 					
 				}
 			}
-		}.start();
+		}; 
+		
+		thread.start();
+		threadList.add(thread);
 	}
 	
 	public void moveY(PhysicsField field, int force)
 	{
-		new Thread()
+		Thread thread = new Thread()
 		{
 			public void run()
 			{
@@ -73,6 +76,9 @@ public class Circle extends PhysicsObject
 					
 				}
 			}
-		}.start();
+		};
+		
+		thread.start();
+		threadList.add(thread);
 	}
 }

@@ -36,8 +36,9 @@ public class Sandbox extends JFrame{
 		fastSquare.moveY(field, 10);
 		slowRect.moveX(field, 1);
 		slowRect.moveY(field, 1);
-		circle.moveX(field, 1);
 		circle.moveY(field, 1);
+		
+		slowRect.stop();
 		
 		
 		this.add(field);
