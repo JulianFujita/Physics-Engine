@@ -19,11 +19,13 @@ public class Sandbox extends JFrame{
 		Rectangle movingRect = new Rectangle(new Point(100, 100), 50, 300, "MovingRect", Color.PINK);
 		Square fastSquare = new Square(new Point(100, 100), 30, "FastSquare", Color.CYAN);
 		Rectangle slowRect = new Rectangle(new Point(0, 0), 100, 50, "SlowRect", Color.GRAY);
+		Circle circle = new Circle(new Point(50, 50), 30, "Circle", Color.YELLOW);
 		
 		field.addEntity(movingSquare);
 		field.addEntity(movingRect);
 		field.addEntity(fastSquare);
 		field.addEntity(slowRect);
+		field.addEntity(circle);
 		
 		// Interact here
 		movingSquare.moveY(field,  5);
@@ -34,6 +36,8 @@ public class Sandbox extends JFrame{
 		fastSquare.moveY(field, 10);
 		slowRect.moveX(field, 1);
 		slowRect.moveY(field, 1);
+		circle.moveX(field, 1);
+		circle.moveY(field, 1);
 		
 		
 		this.add(field);
