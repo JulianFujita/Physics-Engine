@@ -1,6 +1,9 @@
 import java.awt.Color;
+import java.awt.Dimension;
 
-public class Shape 
+import javax.swing.JPanel;
+
+public abstract class Shape  extends JPanel
 {
 	private String name;
 	private Color color;
@@ -9,5 +12,11 @@ public class Shape
 	{
 		this.name = name;
 		this.color = color;
+		this.setToolTipText(name);
+	}
+	
+	public Color getColor()
+	{
+		return color;
 	}
 }

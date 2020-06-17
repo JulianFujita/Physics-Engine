@@ -1,18 +1,29 @@
-import java.awt.Color;
-import java.awt.Point;
+import java.awt.*;
+
+import javax.swing.*;
 
 public class Sandbox {
 
+	JFrame frame = new JFrame("Physics Sandbox");
+	
+	Square square = new Square(new Point(250, 250), 50, "GreenSquare", Color.GREEN);
+	Rectangle rectangle = new Rectangle(new Point(10, 10), 300, 100, "BlueRect", Color.BLUE);
+	
 	public Sandbox()
 	{
+		frame.setSize(new Dimension(500, 500));
+		frame.setLayout(null);
 		
+		frame.add(rectangle);
+		frame.add(square);
+		
+		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
 	}
 	
 	public static void main(String[] args) 
 	{
-		new PhysicsObject("Square", new Square(new Point(0, 0), 10, "one", Color.black));
-		new PhysicsObject("Rectangle", new Rectangle(new Point(0, 0), 10, 20, "two", Color.ORANGE));
-		new PhysicsObject("Circle", new Circle(new Point(10, 10), 20, "three", Color.YELLOW));
+		new Sandbox();
 	}
 
 }

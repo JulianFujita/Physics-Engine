@@ -1,5 +1,10 @@
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Rectangle;
 
 public class Square extends Shape
 {
@@ -18,5 +23,22 @@ public class Square extends Shape
 		hitbox[1] = new Point(origin.x + side, origin.y);
 		hitbox[2] = new Point(origin.x, origin.y + side);
 		hitbox[3] = new Point(origin.x + side, origin.y + side);
+	}
+	
+	public Point[] getHitbox()
+	{
+		return hitbox;
+	}
+	
+	@Override
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setColor(getColor());
+		g2.fill(new Rectangle(origin.x, origin.y, side, side));
+		g2.setColor(Color.BLACK);
+		g2.setStroke(new BasicStroke(3));
+		g2.drawRect(origin.x, origin.y, side, side);
 	}
 }
