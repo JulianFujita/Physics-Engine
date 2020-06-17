@@ -40,4 +40,6 @@ public abstract class PhysicsObject extends JPanel
 		}
 	
 	}
+	
+	public boolean isPointInside(Point point){return false;}	//Placeholder
 }

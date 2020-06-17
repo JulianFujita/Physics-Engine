@@ -3,17 +3,20 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-public class PhysicsField extends JPanel
+public class PhysicsField extends JPanel implements MouseListener
 {
 	private static ArrayList<PhysicsObject> entities = new ArrayList();
 	
 	public PhysicsField()
 	{
 		this.setBackground(Color.DARK_GRAY);
+		this.addMouseListener(this);
 	}
 	
 	public void addEntity(PhysicsObject entity)
@@ -65,5 +68,41 @@ public class PhysicsField extends JPanel
 				g.drawOval(origin.x, origin.y, radius, radius);
 			}
 		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e){}
+
+	@Override
+	public void mousePressed(MouseEvent e)
+	{
+		for(int i = 0; i < entities.size(); i++)
+		{
+			//Check if point is inside of any objects
+			if(entities.get(i).isPointInside(e.getLocationOnScreen())) 
+			{
+				System.out.println(entities.get(i).getName());
+				entities.get(i).stop();
+				break;
+			}
+		}
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

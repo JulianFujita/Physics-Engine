@@ -81,4 +81,14 @@ public class Square extends PhysicsObject
 		thread.start();
 		threadList.add(thread);
 	}
+	
+	public boolean isPointInside(Point point)
+	{
+		Point origin = getLocation();
+		
+		if(point.x < origin.x + side && point.x > origin.x 
+				&& point.y < origin.y + side && point.y > origin.y)
+			return true;
+		return false;
+	}
 }

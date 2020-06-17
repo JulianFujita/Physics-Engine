@@ -15,30 +15,21 @@ public class Sandbox extends JFrame{
 		this.setSize(SCREEN_SIZE);
 		
 		// Add Physics Objects
-		Square movingSquare = new Square(new Point(0, 0), 100, "MovingSquare", Color.ORANGE);
-		Rectangle movingRect = new Rectangle(new Point(100, 100), 50, 300, "MovingRect", Color.PINK);
-		Square fastSquare = new Square(new Point(100, 100), 30, "FastSquare", Color.CYAN);
-		Rectangle slowRect = new Rectangle(new Point(0, 0), 100, 50, "SlowRect", Color.GRAY);
-		Circle circle = new Circle(new Point(50, 50), 30, "Circle", Color.YELLOW);
+		Square movingSquare = new Square(new Point(0, 0), 100, "Orange Square", Color.ORANGE);
+		Rectangle movingRect = new Rectangle(new Point(100, 100), 150, 300, "Pink Rectangle", Color.PINK);
+		Circle movingCircle = new Circle(new Point(50, 50), 100, "Yellow Circle", Color.YELLOW);
 		
 		field.addEntity(movingSquare);
 		field.addEntity(movingRect);
-		field.addEntity(fastSquare);
-		field.addEntity(slowRect);
-		field.addEntity(circle);
+		field.addEntity(movingCircle);
 		
 		// Interact here
-		movingSquare.moveY(field,  5);
-		movingSquare.moveX(field,  4);
-		movingRect.moveX(field, 3);
-		movingRect.moveY(field, 5);
-		fastSquare.moveX(field, 10);
-		fastSquare.moveY(field, 10);
-		slowRect.moveX(field, 1);
-		slowRect.moveY(field, 1);
-		circle.moveY(field, 1);
-		
-		slowRect.stop();
+		movingSquare.moveY(field,  2);
+		movingSquare.moveX(field,  1);
+		movingRect.moveX(field, 2);
+		movingRect.moveY(field, 1);
+		movingCircle.moveY(field, 1);
+		movingCircle.moveX(field,  1);
 		
 		
 		this.add(field);

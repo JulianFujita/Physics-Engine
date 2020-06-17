@@ -81,4 +81,14 @@ public class Circle extends PhysicsObject
 		thread.start();
 		threadList.add(thread);
 	}
+	
+	public boolean isPointInside(Point point)
+	{
+		Point origin = getLocation();
+		
+		if(point.x < origin.x + radius && point.x > origin.x - radius 
+				&& point.y < origin.y + radius && point.y > origin.y - radius)
+			return true;
+		return false;
+	}
 }

@@ -87,4 +87,14 @@ public class Rectangle extends PhysicsObject
 		thread.start();
 		threadList.add(thread);
 	}
+	
+	public boolean isPointInside(Point point)
+	{
+		Point origin = getLocation();
+		
+		if(point.x < origin.x + width && point.x > origin.x 
+				&& point.y < origin.y + height && point.y > origin.y)
+			return true;
+		return false;
+	}
 }
