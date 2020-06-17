@@ -11,6 +11,11 @@ public class PhysicsField extends JPanel
 {
 	private static ArrayList<PhysicsObject> entities = new ArrayList();
 	
+	public PhysicsField()
+	{
+		this.setBackground(Color.DARK_GRAY);
+	}
+	
 	public void addEntity(PhysicsObject entity)
 	{
 		entities.add(entity);

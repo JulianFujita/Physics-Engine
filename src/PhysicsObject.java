@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 
 public abstract class PhysicsObject extends JPanel
 {
+	public static final int FRAME_TIME = 10;
 	private String name;
 	private Color color;
 	private Point location;
@@ -14,7 +15,6 @@ public abstract class PhysicsObject extends JPanel
 		this.location = location;
 		this.name = name;
 		this.color = color;
-		this.setToolTipText(name);
 	}
 	
 	public String getName()

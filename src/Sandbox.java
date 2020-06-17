@@ -13,14 +13,27 @@ public class Sandbox extends JFrame{
 	public Sandbox()
 	{
 		this.setSize(SCREEN_SIZE);
-
-		
 		
 		// Add Physics Objects
-		field.addEntity(new Square(new Point(10, 10), 50, "Square1", Color.BLUE));
-		field.addEntity(new Rectangle(new Point(300, 300), 100, 300, "Rectangle1", Color.BLACK));
-		field.addEntity(new Circle(new Point(300, 50), 100, "Circle1", Color.GREEN));
+		Square movingSquare = new Square(new Point(0, 0), 100, "MovingSquare", Color.ORANGE);
+		Rectangle movingRect = new Rectangle(new Point(100, 100), 50, 300, "MovingRect", Color.PINK);
+		Square fastSquare = new Square(new Point(100, 100), 30, "FastSquare", Color.CYAN);
+		Rectangle slowRect = new Rectangle(new Point(0, 0), 100, 50, "SlowRect", Color.GRAY);
 		
+		field.addEntity(movingSquare);
+		field.addEntity(movingRect);
+		field.addEntity(fastSquare);
+		field.addEntity(slowRect);
+		
+		// Interact here
+		movingSquare.moveY(field,  5);
+		movingSquare.moveX(field,  4);
+		movingRect.moveX(field, 3);
+		movingRect.moveY(field, 5);
+		fastSquare.moveX(field, 10);
+		fastSquare.moveY(field, 10);
+		slowRect.moveX(field, 1);
+		slowRect.moveY(field, 1);
 		
 		
 		this.add(field);
