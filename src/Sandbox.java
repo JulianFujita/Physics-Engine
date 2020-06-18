@@ -9,6 +9,7 @@ public class Sandbox extends JFrame{
 
 	private final static Dimension SCREEN_SIZE = new Dimension(800, 800);
 	private PhysicsField field = new PhysicsField();
+	private MyMenu menu = new MyMenu(field);
 	
 	public Sandbox()
 	{
@@ -16,16 +17,10 @@ public class Sandbox extends JFrame{
 		this.setTitle("Physics Engine");
 		
 		// Add Physics Objects
-		Circle circle1;
-		for(int i = 1; i < 50; i++)
-		{
-			circle1 = new Circle(new Point(0, 0), 50, "Circle", Color.RED);
-			field.addEntity(circle1);
-			circle1.moveX(field, i);
-			circle1.moveY(field, i);
-		}
+		
 		
 		this.add(field);
+		this.setJMenuBar(menu);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
