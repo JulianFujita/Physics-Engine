@@ -7,30 +7,23 @@ import javax.swing.*;
 
 public class Sandbox extends JFrame{
 
-	private final static Dimension SCREEN_SIZE = new Dimension(800, 700);
+	private final static Dimension SCREEN_SIZE = new Dimension(800, 800);
 	private PhysicsField field = new PhysicsField();
 	
 	public Sandbox()
 	{
 		this.setSize(SCREEN_SIZE);
+		this.setTitle("Physics Engine");
 		
 		// Add Physics Objects
-		Square movingSquare = new Square(new Point(0, 0), 100, "Orange Square", Color.ORANGE);
-		Rectangle movingRect = new Rectangle(new Point(100, 100), 150, 300, "Pink Rectangle", Color.PINK);
-		Circle movingCircle = new Circle(new Point(50, 50), 100, "Yellow Circle", Color.YELLOW);
-		
-		field.addEntity(movingSquare);
-		field.addEntity(movingRect);
-		field.addEntity(movingCircle);
-		
-		// Interact here
-		movingSquare.moveY(field,  2);
-		movingSquare.moveX(field,  1);
-		movingRect.moveX(field, 2);
-		movingRect.moveY(field, 1);
-		movingCircle.moveY(field, 1);
-		movingCircle.moveX(field,  1);
-		
+		Circle circle1;
+		for(int i = 1; i < 50; i++)
+		{
+			circle1 = new Circle(new Point(0, 0), 50, "Circle", Color.RED);
+			field.addEntity(circle1);
+			circle1.moveX(field, i);
+			circle1.moveY(field, i);
+		}
 		
 		this.add(field);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

@@ -86,8 +86,8 @@ public class Circle extends PhysicsObject
 	{
 		Point origin = getLocation();
 		
-		if(point.x < origin.x + radius && point.x > origin.x - radius 
-				&& point.y < origin.y + radius && point.y > origin.y - radius)
+		if(point.x < origin.x + 2*radius && point.x > origin.x 
+				&& point.y < origin.y + 2*radius && point.y > origin.y)
 			return true;
 		return false;
 	}

@@ -41,5 +41,8 @@ public abstract class PhysicsObject extends JPanel
 	
 	}
 	
+	public void moveX(PhysicsField field, int force) {}
+	public void moveY(PhysicsField field, int force) {}
+	
 	public boolean isPointInside(Point point){return false;}	//Placeholder
 }

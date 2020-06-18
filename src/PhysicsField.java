@@ -11,7 +11,11 @@ import javax.swing.JPanel;
 
 public class PhysicsField extends JPanel implements MouseListener
 {
+	private static final int FACTOR = 25;
 	private static ArrayList<PhysicsObject> entities = new ArrayList();
+	private static int selectedObject;
+	private static Point mousePressed;
+	private static Point mouseReleased;
 	
 	public PhysicsField()
 	{
@@ -76,22 +80,36 @@ public class PhysicsField extends JPanel implements MouseListener
 	@Override
 	public void mousePressed(MouseEvent e)
 	{
+		Point location = e.getPoint();
+		
 		for(int i = 0; i < entities.size(); i++)
 		{
 			//Check if point is inside of any objects
-			if(entities.get(i).isPointInside(e.getLocationOnScreen())) 
+			if(entities.get(i).isPointInside(location)) 
 			{
-				System.out.println(entities.get(i).getName());
-				entities.get(i).stop();
+				selectedObject = i;
+				mousePressed = location;
 				break;
 			}
+			else
+				selectedObject = 999;
 		}
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void mouseReleased(MouseEvent e)
+	{
+		mouseReleased = e.getPoint();
+		if(!entities.isEmpty() && selectedObject != 999)
+		{
+			PhysicsObject entity = entities.get(selectedObject);
+			int deltaX = mouseReleased.x - mousePressed.x;
+			int deltaY = mouseReleased.y - mousePressed.y;
+			
+			entity.stop();
+			entity.moveX(this, deltaX/FACTOR);
+			entity.moveY(this, deltaY/FACTOR);
+		}
 	}
 
 	@Override
