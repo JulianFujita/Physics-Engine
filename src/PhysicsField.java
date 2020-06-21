@@ -6,11 +6,13 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JPanel;
 
 public class PhysicsField extends JPanel implements MouseListener
 {
+	private static int entityCount = 0;
 	private static final int FACTOR = 25;
 	private static ArrayList<PhysicsObject> entities = new ArrayList();
 	private static int selectedObject;
@@ -26,6 +28,33 @@ public class PhysicsField extends JPanel implements MouseListener
 	public void addEntity(PhysicsObject entity)
 	{
 		entities.add(entity);
+		entityCount++;
+		System.out.println("Entities: " + entityCount);
+	}
+	
+	public void stopAllEntities()
+	{
+		for(int i = 0; i < entities.size(); i ++)
+		{
+			entities.get(i).stop();
+		}
+	}
+	
+	public void randomizeEntities()
+	{
+		Random r = new Random();
+		int randVelX;
+		int randVelY;
+		
+		for(int i = 0; i < entities.size(); i ++)
+		{
+			PhysicsObject entity = entities.get(i);
+			randVelX = r.nextInt(5) + 1;
+			randVelY = r.nextInt(5) + 1;
+			
+			entity.moveX(this, randVelX);
+			entity.moveY(this, randVelY);
+		}
 	}
 	
 	@Override
