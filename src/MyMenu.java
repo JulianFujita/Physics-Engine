@@ -27,13 +27,18 @@ public class MyMenu extends JMenuBar implements ActionListener
 
 	@Override
 	public void actionPerformed(ActionEvent e)
-	{
+	{		
 		String button = e.getActionCommand();
 		switch(button)
 		{
 			case "Square":
 				new SquareEntityDialog(field);
-			break;
+				break;
+			case "Circle":
+				new CircleEntityDialog(field);
+				break;
+			case "Rectangle":
+				new RectangleEntityDialog(field);
 		}
 	}
 }

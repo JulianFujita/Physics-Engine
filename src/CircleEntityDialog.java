@@ -7,29 +7,29 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.*;
 
-public class SquareEntityDialog extends AddEntityDialog
+public class CircleEntityDialog extends AddEntityDialog
 {
-	public final SquarePanel squarePanel = new SquarePanel();
+	public final CirclePanel circlePanel = new CirclePanel();
 	
-	public SquareEntityDialog(PhysicsField field)
+	public CircleEntityDialog(PhysicsField field)
 	{
 		super(field);
-		this.add(squarePanel, BorderLayout.EAST);
+		this.add(circlePanel, BorderLayout.EAST);
 		this.pack();
 	}
 	
-	public class SquarePanel extends JPanel
+	public class CirclePanel extends JPanel
 	{
-		private JLabel sideLabel = new JLabel("Side: ");
-		private JTextField sideField = new JTextField();
+		private JLabel radiusLabel = new JLabel("Radius: ");
+		private JTextField radiusField = new JTextField();
 		
-		public SquarePanel()
+		public CirclePanel()
 		{
 			this.setLayout(new GridLayout(1, 2));
-			sideField.setPreferredSize(new Dimension(50, 25));
+			radiusField.setPreferredSize(new Dimension(50, 25));
 			
-			this.add(sideLabel);
-			this.add(sideField);
+			this.add(radiusLabel);
+			this.add(radiusField);
 		}
 	}
 
@@ -38,7 +38,7 @@ public class SquareEntityDialog extends AddEntityDialog
 	{
 		int x = Integer.parseInt(coordinatePanel.coordX.getText());
 		int y = Integer.parseInt(coordinatePanel.coordY.getText());
-		int side = Integer.parseInt(squarePanel.sideField.getText());
+		int radius = Integer.parseInt(circlePanel.radiusField.getText());
 		String name = colorNamePanel.nameField.getText();
 		Color color;
 		String colorString = colorNamePanel.colorField.getText();
@@ -77,7 +77,7 @@ public class SquareEntityDialog extends AddEntityDialog
 			color = Color.WHITE;	
 		}
 		
-		field.addEntity(new Square(new Point(x, y), side, name, color));
+		field.addEntity(new Circle(new Point(x, y), radius, name, color));
 		field.repaint();
 	}
 }

@@ -7,29 +7,34 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.*;
 
-public class SquareEntityDialog extends AddEntityDialog
+public class RectangleEntityDialog extends AddEntityDialog
 {
-	public final SquarePanel squarePanel = new SquarePanel();
+	public final RectanglePanel rectanglePanel = new RectanglePanel();
 	
-	public SquareEntityDialog(PhysicsField field)
+	public RectangleEntityDialog(PhysicsField field)
 	{
 		super(field);
-		this.add(squarePanel, BorderLayout.EAST);
+		this.add(rectanglePanel, BorderLayout.EAST);
 		this.pack();
 	}
 	
-	public class SquarePanel extends JPanel
+	public class RectanglePanel extends JPanel
 	{
-		private JLabel sideLabel = new JLabel("Side: ");
-		private JTextField sideField = new JTextField();
+		private JLabel widthLabel = new JLabel("Width: ");
+		private JTextField widthField = new JTextField();
+		private JLabel heightLabel = new JLabel("Height: ");
+		private JTextField heightField = new JTextField();
 		
-		public SquarePanel()
+		public RectanglePanel()
 		{
-			this.setLayout(new GridLayout(1, 2));
-			sideField.setPreferredSize(new Dimension(50, 25));
+			this.setLayout(new GridLayout(2, 1));
+			widthField.setPreferredSize(new Dimension(50, 25));
+			heightField.setPreferredSize(new Dimension(50, 25));
 			
-			this.add(sideLabel);
-			this.add(sideField);
+			this.add(widthLabel);
+			this.add(widthField);
+			this.add(heightLabel);
+			this.add(heightField);
 		}
 	}
 
@@ -38,7 +43,8 @@ public class SquareEntityDialog extends AddEntityDialog
 	{
 		int x = Integer.parseInt(coordinatePanel.coordX.getText());
 		int y = Integer.parseInt(coordinatePanel.coordY.getText());
-		int side = Integer.parseInt(squarePanel.sideField.getText());
+		int width = Integer.parseInt(rectanglePanel.widthField.getText());
+		int height = Integer.parseInt(rectanglePanel.heightField.getText());
 		String name = colorNamePanel.nameField.getText();
 		Color color;
 		String colorString = colorNamePanel.colorField.getText();
@@ -77,7 +83,7 @@ public class SquareEntityDialog extends AddEntityDialog
 			color = Color.WHITE;	
 		}
 		
-		field.addEntity(new Square(new Point(x, y), side, name, color));
+		field.addEntity(new Rectangle(new Point(x, y), width, height, name, color));
 		field.repaint();
 	}
 }
