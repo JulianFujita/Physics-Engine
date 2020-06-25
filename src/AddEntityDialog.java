@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
@@ -16,6 +17,7 @@ public abstract class AddEntityDialog extends JFrame implements ActionListener
 	public AddEntityDialog(PhysicsField field)
 	{
 		this.field = field;
+		this.setLocationRelativeTo(field);
 		addButton.addActionListener(this);
 		this.add(title, BorderLayout.PAGE_START);
 		this.add(coordinatePanel, BorderLayout.WEST);
@@ -64,5 +66,16 @@ public abstract class AddEntityDialog extends JFrame implements ActionListener
 			this.add(nameLabel);
 			this.add(nameField);
 		}
+	}
+	
+	public void showError()
+	{
+		JOptionPane.showMessageDialog(this, "Please enter all of the correct information");
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		// Super action
 	}
 }

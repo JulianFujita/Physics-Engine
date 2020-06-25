@@ -13,6 +13,8 @@ public class MyMenu extends JMenuBar implements ActionListener
 	public static final JMenu edit = new JMenu("Edit");
 	public static final JMenuItem stopAll = new JMenuItem("Stop all");
 	public static final JMenuItem randomizeAll = new JMenuItem("Randomize all");
+	public static final JMenuItem resetAll = new JMenuItem("Reset all");
+	public static final JMenuItem deleteAll = new JMenuItem("Delete all");
 	
 	public static PhysicsField field;
 	
@@ -29,8 +31,12 @@ public class MyMenu extends JMenuBar implements ActionListener
 		
 		stopAll.addActionListener(this);
 		randomizeAll.addActionListener(this);
+		resetAll.addActionListener(this);
+		deleteAll.addActionListener(this);
 		edit.add(stopAll);
 		edit.add(randomizeAll);
+		edit.add(resetAll);
+		edit.add(deleteAll);
 		
 		this.add(add);
 		this.add(edit);
@@ -57,6 +63,12 @@ public class MyMenu extends JMenuBar implements ActionListener
 			case "Randomize all":
 				field.stopAllEntities();
 				field.randomizeEntities();
+				break;
+			case "Reset all":
+				field.resetAll();
+				break;
+			case "Delete all":
+				field.deleteAll();
 				break;
 		}
 	}

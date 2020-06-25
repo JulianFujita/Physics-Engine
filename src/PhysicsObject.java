@@ -32,6 +32,11 @@ public abstract class PhysicsObject extends JPanel
 		return location;
 	}
 	
+	public void setLocation(Point location)
+	{
+		this.location = location;
+	}
+	
 	public void stop()
 	{
 		for(int i = 0; i < threadList.size(); i++)

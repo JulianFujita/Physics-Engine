@@ -41,49 +41,58 @@ public class RectangleEntityDialog extends AddEntityDialog
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		int x = Integer.parseInt(coordinatePanel.coordX.getText());
-		int y = Integer.parseInt(coordinatePanel.coordY.getText());
-		int width = Integer.parseInt(rectanglePanel.widthField.getText());
-		int height = Integer.parseInt(rectanglePanel.heightField.getText());
-		String name = colorNamePanel.nameField.getText();
-		Color color;
-		String colorString = colorNamePanel.colorField.getText();
-		colorString = colorString.toUpperCase();
+		super.actionPerformed(e);
 		
-		switch(colorString)
+		try
 		{
-		case "RED":
-			color = Color.RED;
-			break;
-		case "ORANGE":
-			color = Color.orange;
-			break;
-		case "YELLOW":
-			color = Color.yellow;
-			break;
-		case "GREEN":
-			color = Color.green;
-			break;
-		case "BLUE":
-			color = Color.blue;
-			break;
-		case "PINK":
-			color = Color.pink;
-			break;
-		case "CYAN":
-			color = Color.cyan;
-			break;
-		case "GRAY":
-			color = Color.gray;
-			break;
-		case "MAGENTA":
-			color = Color.magenta;
-			break;
-		default:
-			color = Color.WHITE;	
+			int x = Integer.parseInt(coordinatePanel.coordX.getText());
+			int y = Integer.parseInt(coordinatePanel.coordY.getText());
+			int width = Integer.parseInt(rectanglePanel.widthField.getText());
+			int height = Integer.parseInt(rectanglePanel.heightField.getText());
+			String name = colorNamePanel.nameField.getText();
+			Color color;
+			String colorString = colorNamePanel.colorField.getText();
+			colorString = colorString.toUpperCase();
+			
+			switch(colorString)
+			{
+			case "RED":
+				color = Color.RED;
+				break;
+			case "ORANGE":
+				color = Color.orange;
+				break;
+			case "YELLOW":
+				color = Color.yellow;
+				break;
+			case "GREEN":
+				color = Color.green;
+				break;
+			case "BLUE":
+				color = Color.blue;
+				break;
+			case "PINK":
+				color = Color.pink;
+				break;
+			case "CYAN":
+				color = Color.cyan;
+				break;
+			case "GRAY":
+				color = Color.gray;
+				break;
+			case "MAGENTA":
+				color = Color.magenta;
+				break;
+			default:
+				color = Color.WHITE;	
+			}
+			
+			field.addEntity(new Rectangle(new Point(x, y), width, height, name, color));
+			field.repaint();
 		}
-		
-		field.addEntity(new Rectangle(new Point(x, y), width, height, name, color));
-		field.repaint();
+		catch(Exception error)
+		{
+			this.showError();
+		}
 	}
 }

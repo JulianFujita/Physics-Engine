@@ -48,13 +48,32 @@ public class PhysicsField extends JPanel implements MouseListener
 		
 		for(int i = 0; i < entities.size(); i ++)
 		{
+			
 			PhysicsObject entity = entities.get(i);
-			randVelX = r.nextInt(5) + 1;
-			randVelY = r.nextInt(5) + 1;
+			entity.stop();
+			
+			randVelX = r.nextInt(10) - 5;
+			randVelY = r.nextInt(10) - 5;
 			
 			entity.moveX(this, randVelX);
 			entity.moveY(this, randVelY);
 		}
+	}
+	
+	public void resetAll()
+	{
+		stopAllEntities();
+		for(int i = 0; i < entities.size(); i ++)
+		{
+			entities.get(i).setLocation(new Point(0, 0));
+		}
+		this.repaint();
+	}
+	
+	public void deleteAll()
+	{
+		entities = new ArrayList<>();
+		this.repaint();
 	}
 	
 	@Override

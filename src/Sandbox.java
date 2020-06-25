@@ -16,8 +16,6 @@ public class Sandbox extends JFrame{
 		this.setSize(SCREEN_SIZE);
 		this.setTitle("Physics Engine");
 		
-		// Add Physics Objects
-		
 		this.add(field);
 		this.setJMenuBar(menu);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
